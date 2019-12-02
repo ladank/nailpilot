@@ -29,16 +29,17 @@ averages <- mutate(pilot_data[1:167],)
 ### Step 2. Subtract background concentration of each chemical during the blank period from the average during the application period to produce normalized average concentrations for application period
 ```{r}
 #subtract average application from background average for each chemical (vector/array operation) - subtract column 1 from column 2 in the averages df, store result as column 3
+averages$normalized <- (averages$sampleavg - averages$blankavg)
 ```
 
 ### Step 4. Sum the normalized average concentration of all chemicals to obtain total normalized average concentration
 ```{r}
-
+sum_normalized <- sum(averages$normalized)
 ```
 
 ### Step 5. Divide the avg normalized concentration for each chemical by the total average normalized concentration to obtain relative abunance of each chemical attributable to the application. This should be a vector (column) of percentages, with length equal to the total number of chemicals, and the values should sum to 100%
 ```{r}
-
+averages$relative_abundance <- averages$normalized/sum_normalized
 ```
 
 ### Sort the list of chemicals by relative abundance, choose the value of N based on a justifiable criterion (input from Randy? Choose the N that accounts for >50%, >90%, etc.)
