@@ -1,0 +1,59 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(readxl)
+pilot_data <- read_excel("191127_PILOT_PTR.xlsx", skip = 9)
+library(tidyverse)
+```
+
+## Selecting list of targeted chemicals from pilot samples
+
+### Step 1. Obtain average concentration of each chemical during the blank period (aka background concentration) and application period
+```{r}
+averages <- mutate(pilot_data[1:167],)
+
+# select the subset of rows that correspond to the blank period
+# take the column-wise average (average by chemical) (background concentration)
+# transpose and add as first column of dataframe to store averages
+
+# select the susbet of rows that correspond to the application period
+# take the column-wise average (average by chemical)
+# transpose and add as second column of dataframe to store averages
+
+```
+
+### Step 2. Subtract background concentration of each chemical during the blank period from the average during the application period to produce normalized average concentrations for application period
+```{r}
+#subtract average application from background average for each chemical (vector/array operation) - subtract column 1 from column 2 in the averages df, store result as column 3
+```
+
+### Step 4. Sum the normalized average concentration of all chemicals to obtain total normalized average concentration
+```{r}
+
+```
+
+### Step 5. Divide the avg normalized concentration for each chemical by the total average normalized concentration to obtain relative abunance of each chemical attributable to the application. This should be a vector (column) of percentages, with length equal to the total number of chemicals, and the values should sum to 100%
+```{r}
+
+```
+
+### Sort the list of chemicals by relative abundance, choose the value of N based on a justifiable criterion (input from Randy? Choose the N that accounts for >50%, >90%, etc.)
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
